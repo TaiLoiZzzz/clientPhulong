@@ -316,7 +316,7 @@ export default function FeaturedServices() {
             size="lg"
             className="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white px-10 py-6 text-lg rounded-xl shadow-xl hover:scale-105 transition-all duration-300 group"
           >
-            <Link href="/services" className="flex items-center">
+            <Link href="/pricing" className="flex items-center">
               <Zap className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
               Xem tất cả dịch vụ
               <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
