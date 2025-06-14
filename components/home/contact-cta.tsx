@@ -196,7 +196,7 @@ export default function ContactCTA() {
                 size="lg"
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-6 text-base lg:text-lg rounded-xl shadow-xl hover:scale-105 transition-all duration-300 group"
               >
-                <Link href="/dat-hang" className="flex items-center justify-center">
+                <Link href="/order" className="flex items-center justify-center">
                   <Send className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
                   Đặt in ngay
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />

@@ -536,7 +536,7 @@ export default function PricingPage() {
                                   : "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800"
                               }`}
                             >
-                              <Link href="/dat-hang" className="flex items-center justify-center">
+                              <Link href="/order" className="flex items-center justify-center">
                                 <Send className="h-4 w-4 mr-2" />
                                 Gửi yêu cầu báo giá
                                 <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
@@ -676,7 +676,7 @@ export default function PricingPage() {
                   size="lg" 
                   className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-10 py-6 text-lg rounded-xl shadow-xl hover:scale-105 transition-all duration-300 group"
                 >
-                  <Link href="/dat-hang" className="flex items-center">
+                  <Link href="/order" className="flex items-center">
                     <Send className="h-6 w-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
                     Gửi yêu cầu báo giá
                     <ArrowRight className="h-6 w-6 ml-3 group-hover:translate-x-2 transition-transform duration-300" />
