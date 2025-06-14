@@ -73,7 +73,7 @@ export default function ServiceDetailPage() {
 
   const fetchServiceDetail = async () => {
     try {
-      const response = await fetch(`http://14.187.180.6:12122//api/services/${params.id}`)
+      const response = await fetch(`http://14.187.180.6:12122/api/services/${params.id}`)
       if (response.ok) {
         const data = await response.json()
         setService(data)
@@ -98,7 +98,7 @@ export default function ServiceDetailPage() {
 
   const fetchReviews = async () => {
     try {
-      const response = await fetch(`http://14.187.180.6:12122//api/services/${params.id}/reviews`)
+      const response = await fetch(`http://14.187.180.6:12122/api/services/${params.id}`)
       if (response.ok) {
         const data = await response.json()
         setReviews(data)
@@ -184,7 +184,7 @@ export default function ServiceDetailPage() {
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">Không tìm thấy dịch vụ</h1>
           <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed">Dịch vụ bạn tìm kiếm không tồn tại hoặc đã bị xóa</p>
           <Button asChild className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg">
-            <Link href="/services">
+            <Link href="/pricing">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Quay lại danh sách
             </Link>
