@@ -30,6 +30,7 @@ import {
   PrinterIcon
 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { useFavorites } from "@/hooks/use-favorites"
 import { motion } from "framer-motion"
 
 interface Service {
@@ -59,9 +60,9 @@ export default function ServiceDetailPage() {
   const [reviews, setReviews] = useState<Review[]>([])
   const [suggestedServices, setSuggestedServices] = useState<Service[]>([])
   const [loading, setLoading] = useState(true)
-  const [liked, setLiked] = useState(false)
   const [viewCount, setViewCount] = useState(1247)
   const { toast } = useToast()
+  const { toggleFavorite, isFavorite } = useFavorites()
 
   useEffect(() => {
     if (params.id) {
@@ -124,10 +125,19 @@ export default function ServiceDetailPage() {
     reviews.length > 0 ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length : 0
 
   const handleLike = () => {
-    setLiked(!liked)
+    if (!service) return
+    
+    const isNowFavorite = toggleFavorite({
+      id: service.id,
+      name: service.name,
+      price: service.price,
+      image_url: service.image_url,
+      category: service.category
+    })
+    
     toast({
-      title: liked ? "Đã bỏ yêu thích" : "Đã thêm vào yêu thích",
-      description: liked ? "Dịch vụ đã được bỏ khỏi danh sách yêu thích" : "Dịch vụ đã được thêm vào danh sách yêu thích",
+      title: isNowFavorite ? "Đã thêm vào yêu thích" : "Đã bỏ yêu thích",
+      description: isNowFavorite ? "Dịch vụ đã được thêm vào danh sách yêu thích" : "Dịch vụ đã được bỏ khỏi danh sách yêu thích",
     })
   }
 
@@ -205,7 +215,7 @@ export default function ServiceDetailPage() {
           transition={{ duration: 0.5 }}
         >
           <Button variant="ghost" asChild className="mb-4 hover:bg-red-50 hover:text-red-600 rounded-xl transition-all duration-300 group p-2 sm:p-3">
-            <Link href="/services" className="flex items-center text-sm sm:text-base">
+            <Link href="/pricing" className="flex items-center text-sm sm:text-base">
               <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform duration-300" />
               <span className="hidden xs:inline">Quay lại danh sách dịch vụ</span>
               <span className="xs:hidden">Quay lại</span>
@@ -274,13 +284,13 @@ export default function ServiceDetailPage() {
                 size="sm"
                 onClick={handleLike}
                 className={`transition-all duration-300 text-xs sm:text-sm p-2 sm:p-3 ${
-                  liked 
+                  service && isFavorite(service.id) 
                     ? "bg-red-50 border-red-200 text-red-600 hover:bg-red-100" 
                     : "hover:bg-red-50 hover:border-red-200 hover:text-red-600"
                 }`}
               >
-                <Heart className={`mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 ${liked ? "fill-current" : ""}`} />
-                <span className="hidden sm:inline">{liked ? "Đã yêu thích" : "Yêu thích"}</span>
+                <Heart className={`mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 ${service && isFavorite(service.id) ? "fill-current" : ""}`} />
+                <span className="hidden sm:inline">{service && isFavorite(service.id) ? "Đã yêu thích" : "Yêu thích"}</span>
                 <span className="sm:hidden">❤️</span>
               </Button>
               
